@@ -38,7 +38,7 @@ class Header extends Component {
 		}
 
 		this.setState({ menuApp: menu });
-		console.log('userinfor header in redux: ', this.props.userInfo);
+		// console.log('userinfor header in redux: ', this.props.userInfo);
 	}
 
 	render() {

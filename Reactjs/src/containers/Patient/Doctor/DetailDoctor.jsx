@@ -34,7 +34,7 @@ class DetailDoctor extends Component {
 	componentDidUpdate(prevProps, prevState) {}
 
 	render() {
-		console.log('hoidanitchannel state: ', this.state);
+		// console.log('hoidanitchannel state: ', this.state);
 
 		let { language } = this.props;
 		let { detailDoctor } = this.state;

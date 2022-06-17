@@ -11,8 +11,6 @@ module.exports = (sequelize, DataTypes) => {
 			// define association here
 			Markdown.belongsTo(models.User, {
 				foreignKey: 'doctorId',
-				// targetKey: 'keyMap',
-				// as: 'genderData',
 			});
 		}
 	}

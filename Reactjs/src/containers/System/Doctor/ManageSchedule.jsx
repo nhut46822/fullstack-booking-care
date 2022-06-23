@@ -197,8 +197,6 @@ class ManageSchedule extends Component {
 								className="form-control"
 								minDate={yesterday}
 								value={this.state.currentDate}
-								// selected={this.state.currentDate}
-								// defaultValue={new Date()}
 							/>
 						</div>
 						<div className="col-12 pick-hour-container">

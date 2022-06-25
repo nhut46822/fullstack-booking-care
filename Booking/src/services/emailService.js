@@ -19,7 +19,14 @@ let sendSimpleEmail = async (dataSend) => {
 		to: dataSend.receiverEmail, // list of receivers
 		subject: 'Thông tin đặt lịch khám bệnh', // Subject line
 
-		html: `
+		html: getBodyHTMLEmail(dataSend), // html body
+	});
+};
+
+let getBodyHTMLEmail = (dataSend) => {
+	let result = '';
+	if (dataSend.language === 'vi') {
+		result = `
         <h3>Xin chào ${dataSend.patientName}!</h3>
         <p>Bạn nhận được email này vì đã đặt lịch khám bệnh trên Hỏi Dân IT channel</p>
         <p>Thông tin đặt lịch khám bệnh</p>
@@ -33,13 +40,30 @@ let sendSimpleEmail = async (dataSend) => {
         <a href=${dataSend.redirectLink} target="_blank">Click here</a>
         </div>
 
-        <div>Xin chân thành cảm ơn</div>
-        `, // html body
-	});
-};
+        <div>Xin chân thành cảm ơn!</div>
+        `;
+	}
+	if (dataSend.language === 'en') {
+		result = `
+        <h3>Dear ${dataSend.patientName}!</h3>
+        <p>You received this email because you booked a medical appointment on Ask Dan IT channel</p>
+        <p>Information to book a medical appointment</p>
+        <div><b>Time: ${dataSend.time}</b></div>
+        <div><b>Doctor: ${dataSend.doctorName}</b></div>
 
-// async..await is not allowed in global scope, must use a wrapper
-async function main() {}
+        <p>If the above information is correct, please click on the link below
+		to confirm and complete the medical appointment booking procedure
+        </p>
+        <div>
+        <a href=${dataSend.redirectLink} target="_blank">Click here</a>
+        </div>
+
+        <div>Sincerely!</div>
+        `;
+	}
+
+	return result;
+};
 
 module.exports = {
 	sendSimpleEmail,

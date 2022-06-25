@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 			patientId: DataTypes.INTEGER,
 			date: DataTypes.STRING, // nên lưu timestamp vì khi lên react sẽ format ngày tháng theo đúng ý
 			timeType: DataTypes.STRING,
+			token: DataTypes.STRING,
 		},
 		{
 			sequelize,

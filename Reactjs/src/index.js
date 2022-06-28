@@ -2,11 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import './styles/styles.scss';
-
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import IntlProviderWrapper from './hoc/IntlProviderWrapper';
-
 import { Provider } from 'react-redux';
 import reduxStore, { persistor } from './redux';
 
@@ -21,7 +19,7 @@ const renderApp = () => {
 	);
 };
 
-// Hết #90
+// Hết #91
 
 renderApp();
 // If you want your app to work offline and load faster, you can change

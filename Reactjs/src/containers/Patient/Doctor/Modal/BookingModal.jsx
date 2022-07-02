@@ -169,7 +169,7 @@ class BookingModal extends Component {
 			doctorId = dataTime.doctorId;
 		}
 
-		console.log('check data time: ', dataTime);
+		// console.log('check data time: ', dataTime);
 		return (
 			<Modal
 				isOpen={isOpenModal}

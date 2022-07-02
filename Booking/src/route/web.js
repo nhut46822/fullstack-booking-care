@@ -73,6 +73,11 @@ let initWebRoutes = (app) => {
 
 	router.get('/api/get-specialty', specialtyController.getAllSpecialty);
 
+	router.get(
+		'/api/get-detail-specialty-by-id',
+		specialtyController.getDetailSpecialtyById
+	);
+
 	return app.use('/', router);
 };
 

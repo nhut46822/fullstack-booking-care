@@ -19,7 +19,7 @@ const renderApp = () => {
 	);
 };
 
-// Hết #94
+// Hết #95
 
 renderApp();
 // If you want your app to work offline and load faster, you can change

@@ -54,10 +54,23 @@ class DetailSpecialty extends Component {
 						});
 					}
 				}
+
+				let dataProvince = resProvince.data;
+
+				if (dataProvince && dataProvince.length > 0) {
+					dataProvince.unshift({
+						createdAt: null,
+						type: 'PROVINCE',
+						keyMap: 'ALL',
+						valueEn: 'ALL',
+						valueVi: 'Toàn quốc',
+					});
+				}
+
 				this.setState({
 					dataDetailSpecialty: res.data,
 					arrDoctorId: arrDoctorId,
-					listProvince: resProvince.data,
+					listProvince: dataProvince ? dataProvince : [],
 				});
 			}
 		}
@@ -68,8 +81,39 @@ class DetailSpecialty extends Component {
 		}
 	}
 
-	handleOnChangeSelect = (event) => {
-		console.log('check event onchange : ', event.target.value);
+	handleOnChangeSelect = async (event) => {
+		if (
+			this.props.match &&
+			this.props.match.params &&
+			this.props.match.params.id
+		) {
+			let id = this.props.match.params.id;
+			let location = event.target.value;
+
+			let res = await getAllDetailSpecialtyById({
+				id: id,
+				location: location,
+			});
+
+			if (res && res.errCode === 0) {
+				let data = res.data;
+				let arrDoctorId = [];
+				if (data && !_.isEmpty(res.data)) {
+					let arr = data.doctorSpecialty;
+
+					if (arr && arr.length > 0) {
+						arr.map((item, index) => {
+							arrDoctorId.push(item.doctorId);
+						});
+					}
+				}
+
+				this.setState({
+					dataDetailSpecialty: res.data,
+					arrDoctorId: arrDoctorId,
+				});
+			}
+		}
 	};
 
 	render() {
@@ -118,6 +162,8 @@ class DetailSpecialty extends Component {
 									<div className="dt-content-left">
 										<div className="profile-doctor">
 											<ProfileDoctor
+												isShowLinkDetail={true}
+												isShowPrice={false}
 												doctorId={item}
 												isShowDescriptionDoctor={true}
 											/>

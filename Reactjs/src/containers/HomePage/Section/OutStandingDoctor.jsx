@@ -34,11 +34,6 @@ class OutStandingDoctor extends Component {
 	};
 
 	render() {
-		console.log(
-			'hoidanit channel: check topDoctorsRedux: ',
-			this.props.topDoctorsRedux
-		);
-
 		let arrDoctors = this.state.arrDoctors;
 		let { language } = this.props;
 

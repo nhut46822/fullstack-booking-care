@@ -19,7 +19,8 @@ const renderApp = () => {
 	);
 };
 
-// Hết #97
+// Hết #98
+
 renderApp();
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
